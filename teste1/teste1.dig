@@ -1,0 +1,45 @@
+timezone: UTC
+
+_export:
+  LA: 6100
+  carrierId: 1
+  keyword: MEDAG87500001
+  prometheusUrl: http://main.prometheus-a.it.movile.com/prometheus
+
++setup:
+  echo>: start ${session_time}
+
++disp_current_parameters:
+  echo>: Sending keyword ${keyword} to LA ${LA} on carrier ${carrierId}
+
++send_mo_request:
+  http>: ${prometheusUrl}/mo/send
+  method: PUT
+  store_content: true
+  content:
+    destination: ${LA}
+    text: ${keyword}
+    carrierId: ${carrierId}
+  _error:
+    echo>: ERROR SENDING /send/mo REQUEST
+
++process_send_mo_response:
+  _export:
+    send_mo_response: ${http.last_content}
+
+  py>: store_param.store_send_mo_response
+  value: ${send_mo_response}
+
+
++verify_send_mo_response_1:
+  echo>: response ${send_mo_response}
++verify_send_mo_response_2:
+  echo>: status ${send_mo_response.statusDescription}
++verify_send_mo_response_3:
+  echo>: UUID ${send_mo_response.uuid}
+
+
+
++teardown:
+  echo>: finish ${session_time}
+
