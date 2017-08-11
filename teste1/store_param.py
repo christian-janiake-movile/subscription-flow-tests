@@ -1,7 +1,7 @@
 import json
 import digdag
 
-def store_send_mo_response(value):
+def store_value(key, value):
   obj = json.loads(value)
-  digdag.env.store({'send_mo_response': obj})
+  digdag.env.store(dict([(key, obj)]))
 

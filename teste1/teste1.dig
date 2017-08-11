@@ -5,6 +5,7 @@ _export:
   carrierId: 1
   keyword: MEDAG87500001
   prometheusUrl: http://main.prometheus-a.it.movile.com/prometheus
+  sleepSeconds: 10
 
 +setup:
   echo>: start ${session_time}
@@ -24,21 +25,37 @@ _export:
     echo>: ERROR SENDING /send/mo REQUEST
 
 +process_send_mo_response:
-  _export:
-    send_mo_response: ${http.last_content}
+  py>: store_param.store_value
+  key: send_mo_response
+  value: ${http.last_content}
 
-  py>: store_param.store_send_mo_response
-  value: ${send_mo_response}
++echo_send_mo_response:
+  +echo_send_mo_response_1:
+    echo>: response ${send_mo_response}
+  +echo_send_mo_response_2:
+    echo>: status ${send_mo_response.statusDescription}
+  +echo_send_mo_response_3:
+    echo>: UUID ${send_mo_response.uuid}
 
++verify_mo_status:
+  +sleep:
+    sh>: sleep ${sleepSeconds}
+  +fetch:
+    http>: ${prometheusUrl}/mo/status/${send_mo_response.uuid}
+    store_content: true
+  
++process_mo_status:
+  py>: store_param.store_value
+  key: mo_status
+  value: ${http.last_content}
 
-+verify_send_mo_response_1:
-  echo>: response ${send_mo_response}
-+verify_send_mo_response_2:
-  echo>: status ${send_mo_response.statusDescription}
-+verify_send_mo_response_3:
-  echo>: UUID ${send_mo_response.uuid}
-
-
++echo_mo_status:
+  +echo_mo_status_1:
+    echo>: response ${mo_status}
+  +echo_mo_status_2:
+    echo>: statusCode ${mo_status.statusCode}
+  +echo_mo_status_3:
+    echo>: statusDescription ${mo_status.statusDescription}
 
 +teardown:
   echo>: finish ${session_time}
