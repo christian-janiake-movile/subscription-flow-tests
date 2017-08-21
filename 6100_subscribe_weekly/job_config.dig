@@ -6,6 +6,6 @@ _export:
   sleepSeconds: 10
   attempts: 6
   mtLastMinutes: 2
-  mtMessage: "VIVO MEDITACAO: Comando invalido! Envie MEDITA para assinatura mensal ou  MEDITAR para assinatura semanal. Duvidas? Responda AJUDA."
+  mtMessage: "VIVO MEDITACAO: Responda SIM para confirmar a assinatura do servico no valor de R$ 5,99 por semana (renovacao automatica)."
 
 
