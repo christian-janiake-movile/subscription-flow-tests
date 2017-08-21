@@ -1,0 +1,16 @@
+fullName: "+test+check_mt_received"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    http:
+      last_status: 200
+      last_content: "[{\"source\":\"6100\",\"messageText\":\"VIVO MEDITACAO: Voce\
+        \ ja e assinante do servico. Duvidas envie AJUDA. Cancelar envie SAIR\",\"\
+        msisdn\":5519999790852,\"carrierId\":1,\"reportedTime\":\"2017-08-11T19:26:45.442+0000\"\
+        ,\"receivedTime\":\"2017-08-11T19:26:47.170+0000\"}]"
+  report:
+    inputs: []
+    outputs: []

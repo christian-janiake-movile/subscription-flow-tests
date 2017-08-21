@@ -1,0 +1,11 @@
+_export:
+  LA: 6100
+  carrierId: 1
+  keyword: MEDITAR
+  prometheusUrl: http://main.prometheus-a.it.movile.com/prometheus
+  sleepSeconds: 10
+  attempts: 6
+  mtLastMinutes: 2
+  mtMessage: "VIVO MEDITACAO: Comando invalido! Envie MEDITA para assinatura mensal ou  MEDITAR para assinatura semanal. Duvidas? Responda AJUDA."
+
+

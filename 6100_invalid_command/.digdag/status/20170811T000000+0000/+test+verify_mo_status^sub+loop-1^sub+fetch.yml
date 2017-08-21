@@ -1,0 +1,16 @@
+fullName: "+test+verify_mo_status^sub+loop-1^sub+fetch"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    http:
+      last_status: 200
+      last_content: "{\"uuid\":\"54ad8d28-a111-4305-a032-9ee7d7f12d18\",\"reportReceived\"\
+        :\"2017-08-21T21:38:01.621Z\",\"statusCode\":\"2\",\"statusDescription\":\"\
+        MO successfully sent to carrier\",\"msisdn\":\"5519999822456\",\"sentTime\"\
+        :\"2017-08-21T21:38:01.621Z\"}"
+  report:
+    inputs: []
+    outputs: []

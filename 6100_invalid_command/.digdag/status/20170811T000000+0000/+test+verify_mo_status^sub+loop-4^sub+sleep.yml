@@ -1,0 +1,10 @@
+fullName: "+test+verify_mo_status^sub+loop-4^sub+sleep"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams: {}
+  report:
+    inputs: []
+    outputs: []

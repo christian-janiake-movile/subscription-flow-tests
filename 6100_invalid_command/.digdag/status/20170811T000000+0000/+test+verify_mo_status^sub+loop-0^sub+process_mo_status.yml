@@ -1,0 +1,15 @@
+fullName: "+test+verify_mo_status^sub+loop-0^sub+process_mo_status"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    mo_status:
+      msisdn: "-1"
+      statusDescription: "MO not found in our database!"
+      uuid: "54ad8d28-a111-4305-a032-9ee7d7f12d18"
+      statusCode: "4"
+  report:
+    inputs: []
+    outputs: []
