@@ -1,0 +1,94 @@
+timezone: UTC
+
++setup:
+  echo>: start ${session_time}
+
++disp_current_parameters:
+  echo>: Sending keyword ${keyword} to LA ${LA} on carrier ${carrierId}
+
++send_mo_request:
+  http>: ${prometheusUrl}/mo/send
+  method: PUT
+  store_content: true
+  content:
+    destination: ${LA}
+    text: ${keyword}
+    carrierId: ${carrierId}
+  _error:
+    echo>: ERROR SENDING /send/mo REQUEST
+
++process_send_mo_response:
+  py>: store_param.store_value
+  key: send_mo_response
+  value: ${http.last_content}
+
++echo_send_mo_response:
+  +echo_send_mo_response_1:
+    echo>: response ${send_mo_response}
+  +echo_send_mo_response_2:
+    echo>: status ${send_mo_response.statusDescription}
+  +echo_send_mo_response_3:
+    echo>: UUID ${send_mo_response.uuid}
+
+
++verify_mo_status:
+  _export:
+    keep_trying: true
+  loop>: ${attempts}
+  _do:
+    if>: ${keep_trying}
+    _do:
+      +echo_loop_status:
+        echo>: Verify MO status attempt ${i + 1}/${attempts}
+      +sleep:
+        sh>: sleep ${sleepSeconds}
+      +fetch:
+        http>: ${prometheusUrl}/mo/status/${send_mo_response.uuid}
+        store_content: true
+      +process_mo_status:
+        py>: store_param.store_value
+        key: mo_status
+        value: ${http.last_content}
+      +echo_mo_status:
+        +echo_mo_status_1:
+          echo>: response ${mo_status}
+        +echo_mo_status_2:
+          echo>: statusCode ${mo_status.statusCode}
+        +echo_mo_status_3:
+          echo>: statusDescription ${mo_status.statusDescription}
+      +exit_loop:
+        +store_keep_trying:
+          py>: store_param.store_value
+          key: keep_trying
+          value: ${mo_status.statusCode != '2'}
+
++check_mo_status_ok:
+  if>: ${mo_status.statusCode != '2'}
+  _do:
+    fail>: Send MO failed! Last status is ${mo_status.statusDescription}
+
++check_mt_received:
+  http>: ${prometheusUrl}/mt/status/${carrierId}/${mo_status.msisdn}/${mtLastMinutes}
+  store_content: true
+  _error:
+    echo>: ERROR SENDING /mt/status REQUEST
+
++process_check_mt_response:
+  for_each>:
+    mt: ${http.last_content}
+  _do:
+    py>: store_param.store_value
+    key: mt_received
+    value: ${mt}
+
++echo_mt_message:
+  echo>: ${mt_received.messageText}
+
++check_mt_message:
+  if>: ${mt_received.messageText != mtMessage}
+  _do:
+    fail>: MT message text is not the expected!
+
++teardown:
+  echo>: finish ${session_time}
+
