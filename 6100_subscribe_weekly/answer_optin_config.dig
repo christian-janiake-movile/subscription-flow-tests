@@ -1,0 +1,11 @@
+_export:
+  LA: 6100
+  carrierId: 1
+  keyword: Sim
+  prometheusUrl: http://main.prometheus-a.it.movile.com/prometheus
+  sleepSeconds: 10
+  attempts: 6
+  mtLastMinutes: 2
+  mtMessage: "VIVO MEDITACAO: Responda SIM para confirmar a assinatura do servico no valor de R$ 5,99 por semana (renovacao automatica)."
+
+
