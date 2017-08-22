@@ -2,19 +2,21 @@ timezone: UTC
 
 # 1st step: SEND KEYWORD TO LA & VALIDATE OPTIN MSG
  
-!include : 'send_keyword_config.dig'
++step1:
+  !include : 'config_send_keyword.dig'
 
-+setup:
-  echo>: start 1st step ${session_time}
+  +setup:
+    echo>: start 1st step ${session_time}
 
-!include : 'send_mo_receive_mt.dig'
+  !include : 'test_send_mo_receive_mt.dig'
 
 # 2nd step: RESPOND OPTIN WITH YES & VALIDATE WELCOME MSG
 
-!include : 'answer_optin_config.dig'
++step2:
+  !include : 'config_answer_optin.dig'
 
-+setup:
-  echo>: start 2nd step ${session_time}
+  +setup:
+    echo>: start 2nd step ${session_time}
 
-!include : 'send_mo_receive_mt.dig'
+  !include : 'test_send_mo_receive_mt.dig'
 
