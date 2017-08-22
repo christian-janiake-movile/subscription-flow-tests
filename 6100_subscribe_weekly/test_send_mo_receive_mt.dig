@@ -67,25 +67,36 @@ timezone: UTC
   _do:
     fail>: Send MO failed! Last status is ${mo_status.statusDescription}
 
++sleep_between_steps:
+  sh>: sleep ${sleepSeconds}
+
 +check_mt_received:
   http>: ${prometheusUrl}/mt/status/${carrierId}/${mo_status.msisdn}/${mtLastMinutes}
   store_content: true
   _error:
     echo>: ERROR SENDING /mt/status REQUEST
 
-+process_check_mt_response:
++process_received_mt:
   for_each>:
     mt: ${http.last_content}
   _do:
-    py>: store_param.store_value
-    key: mt_received
-    value: ${mt}
-
-+echo_mt_message:
-  echo>: ${mt_received.messageText}
+    +echo_mt_data:
+      echo>: MT RECEIVED ${mt}
+    +check_msg:
+      for_each>:
+        msg: ${mtMessage}
+      _do:
+        if>: ${mt.messageText.startsWith(msg)}
+        _do:
+          +echo_mt_match:
+            echo>: FOUND MT message matches pattern ${msg}
+          +store_mt_match:
+            py>: store_param.store_value
+            key: mt_received
+            value: ${mt}
 
 +check_mt_message:
-  if>: ${mt_received.messageText != mtMessage}
+  if>: ${typeof mt_received === "undefined" || mt_received == null}
   _do:
     fail>: MT message text is not the expected!
 

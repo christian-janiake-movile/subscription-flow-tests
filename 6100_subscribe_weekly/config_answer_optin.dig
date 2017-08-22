@@ -6,6 +6,7 @@ _export:
   sleepSeconds: 10
   attempts: 6
   mtLastMinutes: 2
-  mtMessage: "VIVO MEDITACAO: Voce assinou por 7 dias GRATIS, depois R$ 5,99 por semana (renovacao automatica). Duvidas envie AJUDA. Cancelar envie SAIR."
-
+  mtMessage:
+    - "VIVO MEDITACAO: Voce assinou por 7 dias GRATIS, depois R$ 5,99 por semana (renovacao automatica). Duvidas envie AJUDA. Cancelar envie SAIR."
+    - "VIVO MEDITACAO: Para usar o servico baixe o app no link: https://vivomeditacao.app.link. O seu protocolo de assinatura do Vivo Meditacao e"
 
