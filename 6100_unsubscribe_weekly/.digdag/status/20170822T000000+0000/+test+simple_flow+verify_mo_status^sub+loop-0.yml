@@ -1,0 +1,33 @@
+fullName: "+test+simple_flow+verify_mo_status^sub+loop-0"
+state: "success"
+result:
+  subtaskConfig:
+    +echo_loop_status:
+      echo>: "Verify MO status attempt ${i + 1}/${attempts}"
+    +sleep:
+      sh>: "sleep ${sleepSeconds}"
+    +fetch:
+      http>: "${prometheusUrl}/mo/status/${send_mo_response.uuid}"
+      store_content: true
+    +process_mo_status:
+      py>: "store_param.store_value"
+      key: "mo_status"
+      value: "${http.last_content}"
+    +echo_mo_status:
+      +echo_mo_status_1:
+        echo>: "response ${mo_status}"
+      +echo_mo_status_2:
+        echo>: "statusCode ${mo_status.statusCode}"
+      +echo_mo_status_3:
+        echo>: "statusDescription ${mo_status.statusDescription}"
+    +exit_loop:
+      +store_keep_trying:
+        py>: "store_param.store_value"
+        key: "keep_trying"
+        value: "${mo_status.statusCode != '2'}"
+  exportParams: {}
+  resetStoreParams: []
+  storeParams: {}
+  report:
+    inputs: []
+    outputs: []

@@ -1,0 +1,11 @@
+fullName: "+test+simple_flow+verify_mo_status^sub+loop-1^sub+exit_loop+store_keep_trying"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    keep_trying: true
+  report:
+    inputs: []
+    outputs: []

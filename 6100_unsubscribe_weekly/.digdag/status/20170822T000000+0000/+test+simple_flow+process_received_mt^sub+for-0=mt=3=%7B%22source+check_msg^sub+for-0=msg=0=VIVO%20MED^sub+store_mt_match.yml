@@ -1,0 +1,18 @@
+fullName: "+test+simple_flow+process_received_mt^sub+for-0=mt=3=%7B%22source+check_msg^sub+for-0=msg=0=VIVO%20MED^sub+store_mt_match"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    mt_received:
+      msisdn: 5519999822456
+      receivedTime: "2017-08-22T16:22:52.297+0000"
+      messageText: "VIVO MEDITACAO: Sua assinatura foi cancelada com sucesso. Envie\
+        \ MEDITAR para 6100 e volte a encontrar a paz. Duvidas? Responda AJUDA."
+      source: "6100"
+      carrierId: 1
+      reportedTime: "2017-08-22T16:22:43.519+0000"
+  report:
+    inputs: []
+    outputs: []

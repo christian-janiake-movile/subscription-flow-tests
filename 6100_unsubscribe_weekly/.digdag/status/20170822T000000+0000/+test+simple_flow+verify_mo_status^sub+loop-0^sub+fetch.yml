@@ -1,0 +1,15 @@
+fullName: "+test+simple_flow+verify_mo_status^sub+loop-0^sub+fetch"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    http:
+      last_status: 200
+      last_content: "{\"uuid\":\"9477f4c4-cb63-46a7-9d8e-9fd0214f2e72\",\"statusCode\"\
+        :\"4\",\"statusDescription\":\"MO not found in our database!\",\"msisdn\"\
+        :\"-1\"}"
+  report:
+    inputs: []
+    outputs: []

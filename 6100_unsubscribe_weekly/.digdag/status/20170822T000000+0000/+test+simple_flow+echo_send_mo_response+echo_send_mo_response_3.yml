@@ -1,0 +1,10 @@
+fullName: "+test+simple_flow+echo_send_mo_response+echo_send_mo_response_3"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams: {}
+  report:
+    inputs: []
+    outputs: []

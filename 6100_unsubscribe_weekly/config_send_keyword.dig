@@ -1,0 +1,12 @@
+_export:
+  LA: 6100
+  carrierId: 1
+  keyword: Sair
+  prometheusUrl: http://main.prometheus-a.it.movile.com/prometheus
+  sleepSeconds: 10
+  attempts: 6
+  mtLastMinutes: 2
+  mtMessage:
+    - "VIVO MEDITACAO: Sua assinatura foi cancelada com sucesso. Envie MEDITAR para 6100 e volte a encontrar a paz. Duvidas? Responda AJUDA."
+
+

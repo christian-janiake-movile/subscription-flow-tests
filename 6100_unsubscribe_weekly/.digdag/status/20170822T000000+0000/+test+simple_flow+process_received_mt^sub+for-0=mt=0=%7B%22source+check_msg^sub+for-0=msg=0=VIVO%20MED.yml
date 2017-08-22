@@ -1,0 +1,10 @@
+fullName: "+test+simple_flow+process_received_mt^sub+for-0=mt=0=%7B%22source+check_msg^sub+for-0=msg=0=VIVO%20MED"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams: {}
+  report:
+    inputs: []
+    outputs: []

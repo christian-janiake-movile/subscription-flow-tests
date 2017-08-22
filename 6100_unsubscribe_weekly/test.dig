@@ -1,0 +1,12 @@
+timezone: UTC
+
+# SEND KEYWORD TO LA & VALIDATE MSG
+ 
++simple_flow:
+  !include : 'config_send_keyword.dig'
+
+  +setup:
+    echo>: start 1st step ${session_time}
+
+  !include : 'test_send_mo_receive_mt.dig'
+

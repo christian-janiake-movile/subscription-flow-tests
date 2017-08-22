@@ -1,0 +1,15 @@
+fullName: "+test+simple_flow+send_mo_request"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams:
+    http:
+      last_status: 200
+      last_content: "{\"uuid\":\"9477f4c4-cb63-46a7-9d8e-9fd0214f2e72\",\"statusCode\"\
+        :\"0\",\"statusDescription\":\"Request received and waiting for mobile processing\"\
+        }"
+  report:
+    inputs: []
+    outputs: []

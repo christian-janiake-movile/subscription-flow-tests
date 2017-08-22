@@ -1,0 +1,10 @@
+fullName: "+test+simple_flow+disp_current_parameters"
+state: "success"
+result:
+  subtaskConfig: {}
+  exportParams: {}
+  resetStoreParams: []
+  storeParams: {}
+  report:
+    inputs: []
+    outputs: []
